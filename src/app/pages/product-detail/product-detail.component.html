@@ -1,0 +1,17 @@
+<div class="container">
+  @if (loading){
+  <h1>Loading...</h1>
+  } @if (!loading){
+  <div class="card mt-5 mb-5" style="width: 18rem; height: 83.9vh">
+    <img
+      src="{{ product?.image }}"
+      class="card-img-top"
+      alt="{{ product?.title }}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ product?.title }}</h5>
+      <p class="card-text">{{ product?.description }}</p>
+    </div>
+  </div>
+  }
+</div>

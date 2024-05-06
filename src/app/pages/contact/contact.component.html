@@ -1,0 +1,48 @@
+<div class="container" style="height: 89vh">
+  <form [formGroup]="contactForm" class="row g-3 mt-5" (submit)="send($event)">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="name@example.com"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            hasError('email', 'email') || hasError('email', 'required')
+        }"
+      />
+      @if (hasError('email', 'required')) {
+      <span class="text-danger">This field is required</span>
+      } @if (hasError('email', 'email')) {
+      <span class="text-danger">Invalid email</span>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Message</label
+      >
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        formControlName="message"
+        [ngClass]="{
+          'is-invalid':
+            hasError('message', 'required') || hasError('message', 'length')
+        }"
+      ></textarea>
+      @if (hasError('message', 'required')) {
+      <span class="text-danger">This field is required</span>
+      } @if (hasError('message', 'minlength')) {
+      <span class="text-danger"
+        >This field has to have at least 10 characters</span
+      >
+      }
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>
+</div>
